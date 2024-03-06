@@ -1,0 +1,55 @@
+:root {
+    --main-bg-color: #fff5;
+    --header-bg-color: #fff4;
+    --header-input-bg-color: #fff5;
+    --header-input-hover-bg-color: #fff8;
+    --body-bg-color: #fffb;
+    --scrollbar-thumb-color: #0004;
+    --header-sticky-bg-color: #d5d1defe;
+    --even-row-bg-color: #0000000b;
+    --hovered-row-bg-color: #fff6;
+    --open-status-bg-color: #86e49d;
+    --open-status-text-color: #006b21;
+    --cancelled-status-bg-color: #d893a3;
+    --cancelled-status-text-color: #b30021;
+    --pending-status-bg-color: #ebc474;
+    --shipped-status-bg-color: #6fcaea;
+    --arrow-color: blue;
+    --export-btn-bg-color: #fff6;
+    --export-btn-hover-bg-color: #fff;
+    --file-options-bg-color: #f2f2f2;
+    --file-options-hover-bg-color: #fff;
+}
+
+
+/* Aplicar a fonte Poppins ao corpo do documento */
+
+* {
+    margin: 0;
+    padding: 0;
+
+    box-sizing: border-box;
+   
+}
+
+  
+@media print {
+ .table, .table__body {
+  overflow: visible;
+  height: auto !important;
+  width: auto !important;
+ }
+}
+
+/*@page {
+    size: landscape;
+    margin: 0; 
+}*/
+
+body {
+    min-height: 100vh;
+   
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
