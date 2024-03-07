@@ -11,8 +11,8 @@
     </select>
         </span>
             <NameGraph/>
-            <CentralGraph/>
             <UfGraph/>
+            <CentralGraph/>
            
         </section>
     </div>

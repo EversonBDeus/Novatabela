@@ -64,7 +64,7 @@ const colorMode = useColorMode()
   cursor: pointer;
 }
 .sys-mode body{
-  background-image: linear-gradient(to right top, #303030ab, #3d3d3d57, #212121c5),url('../assets/images/blue.jpg');
+  background-image: linear-gradient(to right top, #30303000, #3d3d3d17, #21212148),url('../assets/images/blue.jpg');
 }
 
 .sys-mode  .header__nav{

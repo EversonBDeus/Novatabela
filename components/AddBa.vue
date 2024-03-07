@@ -86,7 +86,7 @@ const updateBa = (
                 class="input-add"
                 type="text"
                 v-model.trim="store.name"
-                maxlength="15"
+                maxlength="22"
                 minlength="2"
                 required
                 :class="{ active: store.isInvalid }"
@@ -166,9 +166,9 @@ const updateBa = (
 
     <!-- content for the toadd slot -->
       <!-- Botão de adicionar -->
-    <li class="add-box" @click="viewshow = !viewshow">
-    <button class="button-primary">ADICIONAR  </button>
-  </li>
+   
+    <button  @click="viewshow = !viewshow"  class="button-primary">ADICIONAR  </button>
+
 
 
 
@@ -204,9 +204,9 @@ const updateBa = (
   background-color: #f86a6a;
 }
 .input-add {
-  height: 2em;
-  width: 2rem;
-  padding: 0.5rem;
+  height: 1.8em;
+  width: 1.8rem;
+  padding: 0.4rem;
   
 }
 .plus-circle {
@@ -247,17 +247,7 @@ header,
   align-items: center;
   justify-content: space-between;
 }
-.add-box {
-  flex-direction: column;
-  justify-content: center;
-  cursor: pointer;
-}
 
-.add-box p {
-  color: #88abff;
-  font-weight: 500;
-  margin-top: 20px;
-}
 
 .wrapper .note {
   display: flex;
@@ -343,7 +333,7 @@ header,
   border-radius: 5px;
 }
 .popup .content header {
-  padding: 15px 25px;
+  padding: 10px 15px;
   border-bottom: 1px solid #ccc;
 }
 .content header p {
@@ -353,19 +343,19 @@ header,
 }
 .content header i {
   color: #8b8989;
-  font-size: 23px;
+  font-size: 20px;
   cursor: pointer;
 }
 .content form {
-  margin: 15px 25px 35px;
+  margin: 10px 15px 25px;
 }
 .content form .row {
-  margin-bottom: 20px;
+  margin-bottom: 15px;
 }
 form .row label {
   display: block;
-  font-size: 18px;
-  margin-bottom: 6px;
+  font-size: 16px;
+  margin-bottom: 5px;
 }
 .content form :where(input, textarea) {
   width: 100%;
@@ -382,21 +372,27 @@ form textarea {
   resize: none;
   padding: 8px 15px;
 }
-
-.button-primary {
-  width: 8rem !important;
-  margin-top: 1rem;
+.button__add{
+  width: 100%!important;
+  height: 50px!important;
+  font-size: 16px!important;
 }
+
 .content form button,
 .button-primary {
-  width: 100%;
-  height: 50px;
+  width: 90px;
+  height: 40px;
   border: none;
   outline: none;
   color: #fff;
-  font-size: 17px;
+  font-size: 14px;
+  padding: 5px;
   border-radius: 4px;
   background: #6a93f8;
   cursor: pointer;
+}
+.add-box{
+  height:20px ;
+  width:20px;
 }
 </style>

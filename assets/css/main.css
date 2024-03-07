@@ -53,3 +53,31 @@ body {
     justify-content: center;
     align-items: center;
 }
+/* Estilizando o select */
+select {
+    appearance: none; /* Remove o estilo padrão do sistema */
+    padding: 0.5rem; /* Adiciona um espaço interno */
+    font-size: 14px; /* Tamanho da fonte */
+    border: 1px solid #ccc; /* Adiciona uma borda */
+    border-radius: 4px; /* Adiciona cantos arredondados */
+    background-color: #fff; /* Cor de fundo */
+    cursor: pointer; /* Mostra que é interativo */
+  }
+  
+  /* Estilizando as opções */
+  select option {
+    padding: 0.4rem; /* Adiciona um espaço interno */
+    background-color: #fff; /* Cor de fundo */
+    color: #333; /* Cor do texto */
+  }
+  
+  /* Altera a aparência do select quando ele está aberto */
+  select:focus {
+    border-color: #007bff; /* Cor da borda quando focado */
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); /* Adiciona uma sombra */
+  }
+  
+  /* Altera a aparência do select quando passa o mouse */
+  select:hover {
+    border-color: #ffffff; /* Cor da borda quando hover */
+  }

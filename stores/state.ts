@@ -105,19 +105,21 @@ export const useDadosStore = defineStore('dados', {
       // Função para calcular a quantidade de BA por Usuario
 
      // Função para calcular a quantidade de itens por nome
-calculateItemsPerName(period: 'day' | 'week' | 'month' | 'total') {
-  const filteredBAs = this.filterBasByPeriod(this.bas, period);
-
-  const itemsPerName: Record<string, number> = {}; // Objeto para armazenar a contagem por nome
-  filteredBAs.forEach((ba) => {
-    if (!(ba.name in itemsPerName)) {
-      itemsPerName[ba.name] = 0;
-    }
-    itemsPerName[ba.name]++;
-  });
-
-  return { total: filteredBAs.length, perName: itemsPerName };
-},
+     calculateItemsPerName(period: 'day' | 'week' | 'month' | 'total') {
+      const filteredBAs = this.filterBasByPeriod(this.bas, period);
+    
+      const itemsPerName: Record<string, number> = {}; // Objeto para armazenar a contagem por nome
+      filteredBAs.forEach((ba) => {
+        const normalizedName = ba.name.trim().toLowerCase(); // Normaliza o nome
+        if (!(normalizedName in itemsPerName)) {
+          itemsPerName[normalizedName] = 0;
+        }
+        itemsPerName[normalizedName]++;
+      });
+    
+      return { total: filteredBAs.length, perName: itemsPerName };
+    },
+    
 
       
          // Função para calcular a quantidade de itens por Central
@@ -125,6 +127,7 @@ calculateItemsPerName(period: 'day' | 'week' | 'month' | 'total') {
           const filteredBAs = this.filterBasByPeriod(this.bas, period);
           const itemsPerCentral: Record<string, number> = {}; // Objeto para armazenar a contagem por central
           filteredBAs.forEach((ba) => {
+            const central = ba.baCentral.toLowerCase(); // Converter para minúsculas
             // Verifica se a Central já existe no objeto, se não, cria com valor 0
             if (!itemsPerCentral[ba.baCentral]) {
               itemsPerCentral[ba.baCentral] = 0;
@@ -143,6 +146,7 @@ calculateItemsPerName(period: 'day' | 'week' | 'month' | 'total') {
 
       // Percorre a lista de BAs
       filteredBAs.forEach((ba) => {
+        const uf = ba.baUF.toUpperCase(); // Converta para maiúsculas
         // Verifica se a UF já existe no objeto, se não, cria com valor 0
         if (!itemsPerUF[ba.baUF]) {
           itemsPerUF[ba.baUF] = 0;

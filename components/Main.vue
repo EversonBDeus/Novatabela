@@ -530,7 +530,7 @@ text-transform: uppercase;
 text-align: center;
 line-height: 1.5; /* Ajuste conforme necessário para centralizar verticalmente */
 font-size: 16px;
-font-weight: bold;
+
 border-radius: 0.5rem;
 background-color: transparent;
 border: 1px solid transparent;
@@ -596,7 +596,7 @@ background-color: #f1f1f1;
 
 main.table {
 margin-top: 5rem;
-width: 75vw;
+width: 85vw;
 height: 80vh;
 background-color: var(--header-input-bg-color);
 
@@ -717,6 +717,7 @@ tbody tr {
 --delay: 0.1s;
 transition: 0.5s ease-in-out var(--delay), background-color 0s; /* Remova a transição da altura máxima */
 overflow: hidden; /* Esconda o conteúdo excedente */
+
 }
 
 tbody tr.hide {
