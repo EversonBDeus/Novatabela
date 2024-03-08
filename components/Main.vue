@@ -13,6 +13,12 @@
         <Icon name="icon-park:refresh-one" color="black" size="30px"/>
 
       </div>
+      <div>
+        <NuxtLink to="/closeba">
+          <Icon name="icon-park:history" color="black" size="32px"/>
+        </NuxtLink>
+        
+      </div>
       <div class="table__dashboard icontable ">
         <NuxtLink to="/chartpanel">
           <Icon name="fluent-mdl2:b-i-dashboard" color="black" size="32px"/>
@@ -199,20 +205,15 @@
 import type { BasDados } from "../interfaces/basdados";
 import { useDadosStore } from "../stores/state";
 import { defineComponent, ref, computed, onMounted } from "vue";
+import { parse, format } from 'date-fns';
 import ExcelJS from 'exceljs';
 
 const colorMode = useColorMode()
-
-
 
 // Função para obter a primeira letra do nome
 function getFirstLetter(name) {
 return name.charAt(0).toUpperCase();
 }
-
-
-
-
 
 // Variável reativa para o texto de busca
 const searchText = ref("");
@@ -273,24 +274,37 @@ $refs: {
 };
 }
 
+
 // Função para verificar a data e status de cada item da tabela
+function convertDateString(dateString) {
+  const months = [
+    'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho',
+    'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'
+  ];
+
+  const parts = dateString.split(' ');
+  const month = months.indexOf(parts[0]);
+  const day = parseInt(parts[1], 10);
+  const year = parseInt(parts[2], 10);
+
+  return new Date(year, month, day);
+}
+
 function filterTableData(bas) {
   const today = new Date();
   const sevenDaysAgo = new Date(today.setDate(today.getDate() - 7)).getTime();
 
   return bas.map(ba => {
-    const baDate = new Date(ba.date).getTime();
+    const baDate = convertDateString(ba.date).getTime();
     const isStatusEncerrado = ba.baStatus.toLowerCase() === 'encerrado';
     const isMoreThanSevenDays = baDate < sevenDaysAgo;
-    
-   
+
     if (isStatusEncerrado && isMoreThanSevenDays) {
-      return null; // ou undefined
-    
+      return null;
     }
 
     return ba;
-  }).filter(Boolean); // Remove os valores nulos ou indefinidos do array
+  }).filter(Boolean);
 }
 
 

@@ -7,7 +7,7 @@
      
       <nav class="nav__bar">
         <span class="header__option">
-          <h1 class="header__title">Tema de cor: {{ colorMode.value }}</h1>
+          <h1 class="header__title">Tema de cor</h1>
     <select v-model="colorMode.preference">
       <option value="sys">System</option>
       <option value="light">DarkGreen</option>
@@ -122,10 +122,8 @@ box-shadow: 0 0.4rem 0.8rem #90EE90;
 
 }
 .light-mode  main.table {
-
-  background-color: #424242d7;
-
-box-shadow: 0 0.4rem 0.8rem #93ee90;
+background-color: #424242d7;
+box-shadow: 0 0.4rem 0.8rem #222222e0;
 
 }
 .light-mode .table__body {
@@ -214,9 +212,9 @@ tbody td.active {
 
   background-color: #022b42;
 }
-.dark-mode .input-table {
+.dark-mode .input-table{
   font-size: 16px;
-color: rgb(187, 185, 185);
+color: rgb(228, 224, 224);
  
 }
 

@@ -49,10 +49,10 @@ watchEffect(() => {
     padding: 10px 20px;
     border-radius: 7px;
     display: grid;
-    grid-template-columns: repeat(4, 250px); 
+    grid-template-columns: repeat(3, 250px); 
     gap: 20px;
 }
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1370px) {
     .container {
         grid-template-columns: repeat(3, 1fr); /* 3 colunas quando a tela for menor que 1200px */
     }

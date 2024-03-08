@@ -103,14 +103,12 @@ export const useDadosStore = defineStore('dados', {
     },
 
       // Função para calcular a quantidade de BA por Usuario
-
-     // Função para calcular a quantidade de itens por nome
      calculateItemsPerName(period: 'day' | 'week' | 'month' | 'total') {
       const filteredBAs = this.filterBasByPeriod(this.bas, period);
     
       const itemsPerName: Record<string, number> = {}; // Objeto para armazenar a contagem por nome
       filteredBAs.forEach((ba) => {
-        const normalizedName = ba.name.trim().toLowerCase(); // Normaliza o nome
+        const normalizedName = ba.name.trim().replace(/\s+/g, ' ').toLowerCase(); // Normaliza o nome removendo espaços extras
         if (!(normalizedName in itemsPerName)) {
           itemsPerName[normalizedName] = 0;
         }
@@ -121,7 +119,6 @@ export const useDadosStore = defineStore('dados', {
     },
     
 
-      
          // Função para calcular a quantidade de itens por Central
          calculateItemsPerCentral(period: 'day' | 'week' | 'month' | 'total') {
           const filteredBAs = this.filterBasByPeriod(this.bas, period);
@@ -295,8 +292,6 @@ export const useDadosStore = defineStore('dados', {
         const year = dateObj.getFullYear();
   
         // Função auxiliar para formatar os dados adicionais
-
-
         const novoBa: BasDados = {
           baCentral,
           baStatus,

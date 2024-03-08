@@ -1,33 +1,8 @@
 <template>
   <section class="table__body">
-    <form class="form" @submit.prevent="addBaWithCustomDate(newBa.baCentral, newBa.baStatus, newBa.baNumber, newBa.baUF, newBa.name, customDate)">
-      <div class="form-row">
-    <label for="name">Nome:</label>
-    <input type="text" id="name" v-model="newBa.name" required>
-  </div>
-  <div class="form-row">
-    <label for="baUF">UF:</label>
-    <input type="text" id="baUF" v-model="newBa.baUF" required>
-  </div>
-  <div class="form-row">
-    <label for="baCentral">Central:</label>
-    <input type="text" id="baCentral" v-model="newBa.baCentral" required>
-  </div>
-  <div class="form-row">
-    <label for="baNumber">Número BA:</label>
-    <input type="number" id="baNumber" v-model="newBa.baNumber" required>
-  </div>
-  <div class="form-row">
-    <label for="baStatus">Status:</label>
-    <input type="text" id="baStatus" v-model="newBa.baStatus" required>
-  </div>
-  <div class="form-row">
-    <label for="customDate">Data (MM/DD/YYYY):</label>
-    <input type="text" id="customDate" v-model="customDate" required>
-  </div>
-  <button type="submit">Adicionar BA</button>
-    </form>
-    <h1>Lista de Bas Antigos Encerrados</h1>
+  
+    <h1>Lista de Bas Antigos e Encerrados</h1>
+
     <table class="table">
       <thead>
           <tr>
@@ -69,19 +44,37 @@ const bas = ref<BasDados[]>([]); // Usando um ref para garantir a reatividade
 
 // Método computado para filtrar os BAs com status "Encerrado" há mais de 7 dias
 // Método computado para filtrar os BAs com status "Encerrado" há mais de 7 dias
+// Importe a função convertDateString
+function convertDateString(dateString) {
+  const months = [
+    'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho',
+    'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'
+  ];
+
+  const parts = dateString.split(' ');
+  const month = months.indexOf(parts[0]);
+  const day = parseInt(parts[1], 10);
+  const year = parseInt(parts[2], 10);
+
+  return new Date(year, month, day);
+}
+
+// Método computado para filtrar os BAs com status "Encerrado" há mais de 7 dias
 const filtroBAs = computed(() => {
   console.log('Todos os dados:', bas.value);
   const today = new Date();
   const sevenDaysAgo = new Date(today.setDate(today.getDate() - 7)).getTime();
 
   return bas.value.filter(ba => {
-    const baDate = new Date(ba.date).getTime();
+    // Use convertDateString para converter a data
+    const baDate = convertDateString(ba.date).getTime();
     const isStatusEncerrado = ba.baStatus.toLowerCase() === 'encerrado';
     const isMoreThanSevenDays = baDate < sevenDaysAgo;
 
     return isStatusEncerrado && isMoreThanSevenDays;
   });
 });
+
 // Campos do novo BA
 const newBa = ref({
   baCentral: "",
